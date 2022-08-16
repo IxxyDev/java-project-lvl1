@@ -27,6 +27,12 @@ lint:
 update-deps:
 	./gradlew useLatestVersions
 
+dev:
+	./gradlew clean
+	./gradlew installDist
+	./build/install/app/bin/app
+
+
 
 build-run: build run
 
