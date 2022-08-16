@@ -3,4 +3,4 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/d8f5a61f67524eecff0a/maintainability)](https://codeclimate.com/github/IxxyDev/java-project-lvl1/maintainability)
 
 Example:
-[![asciicast](https://asciinema.org/a/xtvetH05Y7qdQ4Eo6tBxfIBe8.png)](https://asciinema.org/a/xtvetH05Y7qdQ4Eo6tBxfIBe8)
+[![asciicast](https://asciinema.org/a/xtvetH05Y7qdQ4Eo6tBxfIBe8.svg)](https://asciinema.org/a/xtvetH05Y7qdQ4Eo6tBxfIBe8)
