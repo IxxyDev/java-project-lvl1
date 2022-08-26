@@ -4,6 +4,7 @@ import hexlet.code.games.ArithmeticProgression;
 import hexlet.code.games.Calculator;
 import hexlet.code.games.GCD;
 import hexlet.code.games.IsEven;
+import hexlet.code.games.IsPrime;
 
 import java.util.Scanner;
 
@@ -15,6 +16,7 @@ public class App {
         System.out.println("3 - Calculator");
         System.out.println("4 - GCD");
         System.out.println("5 - Arithmetic Progression");
+        System.out.println("6 - Is Prime");
         System.out.println("0 - Exit");
         System.out.println("Your choice ");
         Scanner scanner = new Scanner(System.in);
@@ -27,6 +29,7 @@ public class App {
             case 3 -> Calculator.run();
             case 4 -> GCD.run();
             case 5 -> ArithmeticProgression.run();
+            case 6 -> IsPrime.run();
             default -> {
                 System.out.println("Sorry, there is no such option");
                 System.exit(0);
