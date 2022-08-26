@@ -2,12 +2,12 @@ package hexlet.code.games;
 
 import hexlet.code.Engine;
 
-import java.util.Arrays;
 import java.util.Random;
 
 public class ArithmeticProgression {
     private static String correctAnswer;
     private static final int PROGRESSION_LENGTH_LIMIT = 5;
+    private static final int MIN_PROGRESSION_LENGTH = 5;
     private static final int FIRST_NUMBER_LIMIT = 15;
     private static final int STEP_LIMIT = 20;
     private static final String GAME_DESCRIPTION = "What number is missing in the progression?";
@@ -36,8 +36,7 @@ public class ArithmeticProgression {
 
     private static String[] generateProgression() {
         Random random = new Random();
-
-        var progressionLength = random.nextInt(PROGRESSION_LENGTH_LIMIT) + 5;
+        var progressionLength = random.nextInt(PROGRESSION_LENGTH_LIMIT) + MIN_PROGRESSION_LENGTH;
         var firstNumber = random.nextInt(FIRST_NUMBER_LIMIT);
         // Min step is 1;
         var step = random.nextInt(STEP_LIMIT) + 1;
