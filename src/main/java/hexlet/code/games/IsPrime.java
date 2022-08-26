@@ -18,13 +18,12 @@ public class IsPrime {
             gameData[turn][1] = data[1];
             turn++;
         }
-
         Engine.start(GAME_DESCRIPTION, gameData);
     }
 
-    public static String[] getGameData() {
+    private static String[] getGameData() {
         var number = getRandomPositiveInt();
-        return new String[] {Integer.toString(getRandomPositiveInt()), getCorrectAnswer(number)};
+        return new String[] {Integer.toString(number), getCorrectAnswer(number)};
     }
 
     private static int getRandomPositiveInt() {

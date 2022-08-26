@@ -7,7 +7,7 @@ import java.util.Random;
 
 public class ArithmeticProgression {
     private static String correctAnswer;
-    private static final int PROGRESSION_LENGTH_LIMIT = 8;
+    private static final int PROGRESSION_LENGTH_LIMIT = 7;
     private static final int FIRST_NUMBER_LIMIT = 15;
     private static final int STEP_LIMIT = 20;
     private static final String GAME_DESCRIPTION = "What number is missing in the progression?";
@@ -26,7 +26,7 @@ public class ArithmeticProgression {
         Engine.start(GAME_DESCRIPTION, gameData);
     }
 
-    public static String[] getGameData() {
+    private static String[] getGameData() {
         var progression = popRandomElement(generateProgression());
         var question = new StringBuilder();
         for (String s : progression) {
@@ -38,8 +38,8 @@ public class ArithmeticProgression {
     private static String[] generateProgression() {
         Random random = new Random();
 
-        // To have at least 2 numbers;
-        var progressionLength = random.nextInt(PROGRESSION_LENGTH_LIMIT) + 2;
+        // To have at least 3 numbers;
+        var progressionLength = random.nextInt(PROGRESSION_LENGTH_LIMIT) + 3;
         var firstNumber = random.nextInt(FIRST_NUMBER_LIMIT);
         // Min step is 1;
         var step = random.nextInt(STEP_LIMIT) + 1;

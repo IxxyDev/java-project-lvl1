@@ -4,10 +4,8 @@ import java.util.Scanner;
 
 public class Engine {
     public static final int CORRECT_ANSWERS_LIMIT = 3;
-
     private static int correctAnswersInARow = 0;
     private static String userName;
-
 
     public static void greetUser() {
         Scanner scanner = new Scanner(System.in);
@@ -18,7 +16,7 @@ public class Engine {
         System.out.println("Hello, " + userName + "!");
     }
 
-    public static void checkAnswer(String userAnswer, String correctAnswer) {
+    private static void checkAnswer(String userAnswer, String correctAnswer) {
         if (userAnswer.equals(correctAnswer)) {
             System.out.println("Correct!");
             correctAnswersInARow++;
@@ -28,8 +26,7 @@ public class Engine {
             System.exit(0);
         }
     }
-
-
+    
     public static void start(String taskDescription, String[][] gameData) {
         greetUser();
         System.out.println(taskDescription);

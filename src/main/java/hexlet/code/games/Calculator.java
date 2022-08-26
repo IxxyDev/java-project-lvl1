@@ -23,7 +23,7 @@ public class Calculator {
         Engine.start(GAME_DESCRIPTION, gameData);
     }
 
-    public static String[] getGameData() {
+    private static String[] getGameData() {
         String expression = createExpression(getRandomPositiveIntegers(), getRandomOperation());
         return new String[] {expression, Integer.toString(calculate(expression))};
     }

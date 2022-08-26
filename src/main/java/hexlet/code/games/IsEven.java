@@ -2,7 +2,6 @@ package hexlet.code.games;
 
 import hexlet.code.Engine;
 
-import java.util.Arrays;
 import java.util.Random;
 
 public class IsEven {
@@ -22,7 +21,7 @@ public class IsEven {
         Engine.start(GAME_DESCRIPTION, gameData);
     }
 
-    public static String[] getGameData() {
+    private static String[] getGameData() {
         var number = getRandomPositiveInt();
         return new String[] {Integer.toString(number), getCorrectAnswer(number)};
     }

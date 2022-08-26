@@ -22,7 +22,7 @@ public class GCD {
         Engine.start(GAME_DESCRIPTION, gameData);
     }
 
-    public static String[] getGameData() {
+    private static String[] getGameData() {
         var numbers = getRandomPositiveInts();
         return new String[] {numbers[0] + " " + numbers[1], calculateCSD(numbers)};
     }
