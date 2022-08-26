@@ -3,9 +3,11 @@ package hexlet.code;
 import java.util.Scanner;
 
 public class Engine {
-    private static final int CORRECT_ANSWERS_LIMIT = 3;
+    public static final int CORRECT_ANSWERS_LIMIT = 3;
+
     private static int correctAnswersInARow = 0;
     private static String userName;
+
 
     public static void greetUser() {
         Scanner scanner = new Scanner(System.in);
@@ -28,15 +30,15 @@ public class Engine {
     }
 
 
-    public static void start(String taskDescription, String[] gameData) {
+    public static void start(String taskDescription, String[][] gameData) {
         greetUser();
         System.out.println(taskDescription);
         Scanner scanner = new Scanner(System.in);
 
         while (correctAnswersInARow < CORRECT_ANSWERS_LIMIT) {
-            System.out.println("Question: " + gameData[0]);
+            System.out.println("Question: " + gameData[correctAnswersInARow][0]);
             var userAnswer = scanner.next();
-            checkAnswer(userAnswer, gameData[1]);
+            checkAnswer(userAnswer, gameData[correctAnswersInARow][1]);
         }
 
         System.out.println("Congratulations, " + userName + "!");

@@ -13,10 +13,19 @@ public class ArithmeticProgression {
     private static final String GAME_DESCRIPTION = "What number is missing in the progression?";
 
     public static void run() {
-        Engine.start(GAME_DESCRIPTION, getAnswers());
+        var turn = 0;
+        String[][] gameData = new String[Engine.CORRECT_ANSWERS_LIMIT][2];
+
+        while (turn < Engine.CORRECT_ANSWERS_LIMIT) {
+            gameData[turn][0] = getGameData()[0];
+            gameData[turn][1] = getGameData()[1];
+            turn++;
+        }
+
+        Engine.start(GAME_DESCRIPTION, gameData);
     }
 
-    public static String[] getAnswers() {
+    public static String[] getGameData() {
         var progression = popRandomElement(generateProgression());
         var question = new StringBuilder();
         for (String s : progression) {

@@ -9,10 +9,20 @@ public class GCD {
     private static final String GAME_DESCRIPTION = "Find the greatest common divisor of given numbers.";
 
     public static void run() {
-        Engine.start(GAME_DESCRIPTION, getAnswers());
+        var turn = 0;
+        String[][] gameData = new String[Engine.CORRECT_ANSWERS_LIMIT][3];
+
+        while (turn < Engine.CORRECT_ANSWERS_LIMIT) {
+            gameData[turn][0] = getGameData()[0];
+            gameData[turn][1] = getGameData()[1];
+            gameData[turn][2] = getGameData()[2];
+            turn++;
+        }
+
+        Engine.start(GAME_DESCRIPTION, gameData);
     }
 
-    public static String[] getAnswers() {
+    public static String[] getGameData() {
         var numbers = getRandomPositiveInts();
         return new String[] {numbers[0], numbers[1], calculateCSD(numbers)};
     }

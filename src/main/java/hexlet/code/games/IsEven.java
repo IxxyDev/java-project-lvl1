@@ -9,10 +9,19 @@ public class IsEven {
     private static final String GAME_DESCRIPTION = "Answer 'yes' if number even otherwise answer 'no'.";
 
     public static void run() {
-        Engine.start(GAME_DESCRIPTION, getAnswers());
+        var turn = 0;
+        String[][] gameData = new String[Engine.CORRECT_ANSWERS_LIMIT][2];
+
+        while (turn < Engine.CORRECT_ANSWERS_LIMIT) {
+            gameData[turn][0] = getGameData()[0];
+            gameData[turn][1] = getGameData()[1];
+            turn++;
+        }
+
+        Engine.start(GAME_DESCRIPTION, gameData);
     }
 
-    public static String[] getAnswers() {
+    public static String[] getGameData() {
         var number = getRandomPositiveInt();
         return new String[] {Integer.toString(getRandomPositiveInt()), getCorrectAnswer(number)};
     }
