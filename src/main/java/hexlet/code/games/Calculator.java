@@ -1,33 +1,21 @@
 package hexlet.code.games;
 
-import hexlet.code.Cli;
+import hexlet.code.Engine;
 
 import java.util.Random;
-import java.util.Scanner;
 
 public class Calculator {
-    private static int correctAnswersInARow = 0;
     private static final int NUMBER_OF_OPERATIONS = 3;
-    private static final int CORRECT_ANSWERS_LIMIT = 3;
     private static final int RANDOM_UPPER_LIMIT = 100;
+    private static final String GAME_DESCRIPTION = "What is the result of the expression?";
 
-    public static void main() {
-        Scanner scanner = new Scanner(System.in);
+    public static void run() {
+        Engine.start(GAME_DESCRIPTION, getAnswers());
+    }
 
-        while (correctAnswersInARow < CORRECT_ANSWERS_LIMIT) {
-            var numbers = getRandomPositiveIntegers();
-            var operation = getRandomOperation();
-            var expression = createExpression(numbers, operation);
-
-            System.out.println("What is the result of the expression?");
-            System.out.println("Question: " + expression);
-            int answer = scanner.nextInt();
-            var correctAnswer = calculate(expression);
-            isAnswerCorrect(correctAnswer, answer);
-        }
-
-        System.out.println("Congratulations " + Cli.getUserName() + "!");
-        System.exit(0);
+    public static String[] getAnswers() {
+        String expression = createExpression(getRandomPositiveIntegers(), getRandomOperation());
+        return new String[] {expression, Integer.toString(calculate(expression))};
     }
 
     public static int[] getRandomPositiveIntegers() {
@@ -37,18 +25,6 @@ public class Calculator {
         numbers[1] = random.nextInt(RANDOM_UPPER_LIMIT);
 
         return numbers;
-    }
-
-    private static void isAnswerCorrect(int correctAnswer, int answer) {
-        if (answer == correctAnswer) {
-            System.out.println("Correct!");
-            correctAnswersInARow++;
-        } else {
-            System.out.println(answer + " is wrong answer ;(. Correct answer was " + correctAnswer + ".");
-            System.out.println("Let's try again, " + Cli.getUserName() + "!");
-            correctAnswersInARow = 0;
-            System.exit(0);
-        }
     }
 
     private static String getRandomOperation() {

@@ -1,46 +1,29 @@
 package hexlet.code.games;
 
-import hexlet.code.Cli;
+import hexlet.code.Engine;
 
 import java.util.Random;
-import java.util.Scanner;
 
 public class IsEven {
-    private static int correctAnswersInARow = 0;
     private static final int RANDOM_UPPER_LIMIT = 100;
-    private static final int CORRECT_ANSWERS_LIMIT = 3;
+    private static final String GAME_DESCRIPTION = "Answer 'yes' if number even otherwise answer 'no'.";
 
-    public static void main() {
-        Scanner scanner = new Scanner(System.in);
-
-        while (correctAnswersInARow < CORRECT_ANSWERS_LIMIT) {
-            int number = getRandomPositiveInt();
-            System.out.println("Answer 'yes' if number even otherwise answer 'no'.");
-            System.out.println("Question: " + number);
-            String answer = scanner.next();
-            isAnswerCorrect(number, answer);
-        }
-
-        System.out.println("Congratulations " + Cli.getUserName() + "!");
-        System.exit(0);
+    public static void run() {
+        Engine.start(GAME_DESCRIPTION, getAnswers());
     }
 
-    public static int getRandomPositiveInt() {
+    public static String[] getAnswers() {
+        var number = getRandomPositiveInt();
+        return new String[] {Integer.toString(getRandomPositiveInt()), getCorrectAnswer(number)};
+    }
+
+    private static int getRandomPositiveInt() {
         Random random = new Random();
         return random.nextInt(RANDOM_UPPER_LIMIT);
     }
 
-    public static void isAnswerCorrect(int number, String answer) {
-        if ((isEven(number) && answer.equals("yes")) || (!isEven(number) && answer.equals("no"))) {
-            System.out.println("Correct!");
-            correctAnswersInARow++;
-        } else {
-            String rightAnswer = answer.equals("yes") ? "'no'" : "'yes'";
-            System.out.println(answer + " is wrong answer ;(. Correct answer was " + rightAnswer + ".");
-            System.out.println("Let's try again, " + Cli.getUserName() + "!");
-            correctAnswersInARow = 0;
-            System.exit(0);
-        }
+    private static String getCorrectAnswer(int number) {
+        return isEven(number) ? "'yes'" : "'no'";
     }
 
     private static boolean isEven(int n) {

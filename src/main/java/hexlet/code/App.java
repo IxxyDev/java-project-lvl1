@@ -17,18 +17,14 @@ public class App {
         int number = scanner.nextInt();
 
         switch (number) {
-            case 1:
-                Cli.greetUser();
-            case 2:
-                Cli.greetUser();
-                IsEven.main();
-            case 3:
-                Cli.greetUser();
-                Calculator.main();
-            case 0:
+            case 0 -> System.exit(0);
+            case 1 -> Engine.greetUser();
+            case 2 -> IsEven.run();
+            case 3 -> Calculator.run();
+            default -> {
+                System.out.println("Sorry, there is no such option");
                 System.exit(0);
-            default:
-                System.out.println("Sorry, there's no such menu option");
+            }
         }
     }
 }
