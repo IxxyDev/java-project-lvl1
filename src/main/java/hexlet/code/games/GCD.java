@@ -13,9 +13,10 @@ public class GCD {
         String[][] gameData = new String[Engine.CORRECT_ANSWERS_LIMIT][3];
 
         while (turn < Engine.CORRECT_ANSWERS_LIMIT) {
-            gameData[turn][0] = getGameData()[0];
-            gameData[turn][1] = getGameData()[1];
-            gameData[turn][2] = getGameData()[2];
+            var data = getGameData();
+            gameData[turn][0] = data[0];
+            gameData[turn][1] = data[1];
+            gameData[turn][2] = data[2];
             turn++;
         }
 

@@ -14,8 +14,9 @@ public class Calculator {
         String[][] gameData = new String[Engine.CORRECT_ANSWERS_LIMIT][2];
 
         while (turn < Engine.CORRECT_ANSWERS_LIMIT) {
-            gameData[turn][0] = getGameData()[0];
-            gameData[turn][1] = getGameData()[1];
+            var data = getGameData();
+            gameData[turn][0] = data[0];
+            gameData[turn][1] = data[1];
             turn++;
         }
 

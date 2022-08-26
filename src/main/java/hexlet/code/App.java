@@ -8,7 +8,17 @@ import hexlet.code.games.IsPrime;
 
 import java.util.Scanner;
 
+
 public class App {
+    // Через Enum не получалось проверить в switch/case(((
+    private static final int EXIT = 0;
+    private static final int GREET = 1;
+    private static final int IS_EVEN = 2;
+    private static final int CALCULATOR = 3;
+    private static final int CHECK_DIVIDER = 4;
+    private static final int ARITHMETIC_PROGRESSION = 5;
+    private static final int IS_PRIME = 6;
+
     public static void main(String[] args) {
         System.out.println("Please enter the game number and press Enter");
         System.out.println("1 - Greet");
@@ -22,14 +32,15 @@ public class App {
         Scanner scanner = new Scanner(System.in);
         int number = scanner.nextInt();
 
+
         switch (number) {
-            case 0 -> System.exit(0);
-            case 1 -> Engine.greetUser();
-            case 2 -> IsEven.run();
-            case 3 -> Calculator.run();
-            case 4 -> GCD.run();
-            case 5 -> ArithmeticProgression.run();
-            case 6 -> IsPrime.run();
+            case EXIT -> System.exit(0);
+            case GREET -> Engine.greetUser();
+            case IS_EVEN -> IsEven.run();
+            case CALCULATOR -> Calculator.run();
+            case CHECK_DIVIDER -> GCD.run();
+            case ARITHMETIC_PROGRESSION -> ArithmeticProgression.run();
+            case IS_PRIME -> IsPrime.run();
             default -> {
                 System.out.println("Sorry, there is no such option");
                 System.exit(0);

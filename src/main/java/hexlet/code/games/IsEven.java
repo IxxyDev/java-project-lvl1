@@ -2,6 +2,7 @@ package hexlet.code.games;
 
 import hexlet.code.Engine;
 
+import java.util.Arrays;
 import java.util.Random;
 
 public class IsEven {
@@ -13,17 +14,17 @@ public class IsEven {
         String[][] gameData = new String[Engine.CORRECT_ANSWERS_LIMIT][2];
 
         while (turn < Engine.CORRECT_ANSWERS_LIMIT) {
-            gameData[turn][0] = getGameData()[0];
-            gameData[turn][1] = getGameData()[1];
+            var data = getGameData();
+            gameData[turn][0] = data[0];
+            gameData[turn][1] = data[1];
             turn++;
         }
-
         Engine.start(GAME_DESCRIPTION, gameData);
     }
 
     public static String[] getGameData() {
         var number = getRandomPositiveInt();
-        return new String[] {Integer.toString(getRandomPositiveInt()), getCorrectAnswer(number)};
+        return new String[] {Integer.toString(number), getCorrectAnswer(number)};
     }
 
     private static int getRandomPositiveInt() {
@@ -32,7 +33,7 @@ public class IsEven {
     }
 
     private static String getCorrectAnswer(int number) {
-        return isEven(number) ? "'yes'" : "'no'";
+        return isEven(number) ? "yes" : "no";
     }
 
     private static boolean isEven(int n) {
