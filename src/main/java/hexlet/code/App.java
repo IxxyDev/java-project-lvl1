@@ -1,5 +1,6 @@
 package hexlet.code;
 
+import hexlet.code.games.ArithmeticProgression;
 import hexlet.code.games.Calculator;
 import hexlet.code.games.GCD;
 import hexlet.code.games.IsEven;
@@ -13,6 +14,7 @@ public class App {
         System.out.println("2 - Is Even");
         System.out.println("3 - Calculator");
         System.out.println("4 - GCD");
+        System.out.println("5 - Arithmetic Progression");
         System.out.println("0 - Exit");
         System.out.println("Your choice ");
         Scanner scanner = new Scanner(System.in);
@@ -24,6 +26,7 @@ public class App {
             case 2 -> IsEven.run();
             case 3 -> Calculator.run();
             case 4 -> GCD.run();
+            case 5 -> ArithmeticProgression.run();
             default -> {
                 System.out.println("Sorry, there is no such option");
                 System.exit(0);
