@@ -20,6 +20,7 @@ public class App {
     private static final int IS_PRIME = 6;
 
     public static void main(String[] args) {
+        System.out.println("/Welcome to the Brain Games!/");
         printMenu();
         Scanner scanner = new Scanner(System.in);
         int number = scanner.nextInt();
