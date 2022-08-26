@@ -10,13 +10,12 @@ public class GCD {
 
     public static void run() {
         var turn = 0;
-        String[][] gameData = new String[Engine.CORRECT_ANSWERS_LIMIT][3];
+        String[][] gameData = new String[Engine.CORRECT_ANSWERS_LIMIT][2];
 
         while (turn < Engine.CORRECT_ANSWERS_LIMIT) {
             var data = getGameData();
             gameData[turn][0] = data[0];
             gameData[turn][1] = data[1];
-            gameData[turn][2] = data[2];
             turn++;
         }
 
@@ -25,7 +24,7 @@ public class GCD {
 
     public static String[] getGameData() {
         var numbers = getRandomPositiveInts();
-        return new String[] {numbers[0], numbers[1], calculateCSD(numbers)};
+        return new String[] {numbers[0] + " " + numbers[1], calculateCSD(numbers)};
     }
 
     private static String[] getRandomPositiveInts() {
