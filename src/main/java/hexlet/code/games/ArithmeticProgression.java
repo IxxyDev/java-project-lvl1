@@ -22,7 +22,6 @@ public class ArithmeticProgression {
             gameData[turn][1] = data[1];
             turn++;
         }
-        System.out.println(Arrays.deepToString(gameData));
         Engine.start(GAME_DESCRIPTION, gameData);
     }
 
