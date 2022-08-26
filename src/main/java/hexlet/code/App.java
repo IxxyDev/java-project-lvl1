@@ -20,18 +20,9 @@ public class App {
     private static final int IS_PRIME = 6;
 
     public static void main(String[] args) {
-        System.out.println("Please enter the game number and press Enter");
-        System.out.println("1 - Greet");
-        System.out.println("2 - Is Even");
-        System.out.println("3 - Calculator");
-        System.out.println("4 - GCD");
-        System.out.println("5 - Arithmetic Progression");
-        System.out.println("6 - Is Prime");
-        System.out.println("0 - Exit");
-        System.out.println("Your choice ");
+        printMenu();
         Scanner scanner = new Scanner(System.in);
         int number = scanner.nextInt();
-
 
         switch (number) {
             case EXIT -> System.exit(0);
@@ -46,5 +37,17 @@ public class App {
                 System.exit(0);
             }
         }
+    }
+
+    private static void printMenu() {
+        System.out.println("Please enter the game number and press Enter");
+        System.out.println("1 - Greet");
+        System.out.println("2 - Is Even");
+        System.out.println("3 - Calculator");
+        System.out.println("4 - GCD");
+        System.out.println("5 - Arithmetic Progression");
+        System.out.println("6 - Is Prime");
+        System.out.println("0 - Exit");
+        System.out.println("Your choice ");
     }
 }

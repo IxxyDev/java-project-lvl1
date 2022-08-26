@@ -26,7 +26,7 @@ public class Engine {
             System.exit(0);
         }
     }
-    
+
     public static void start(String taskDescription, String[][] gameData) {
         greetUser();
         System.out.println(taskDescription);
