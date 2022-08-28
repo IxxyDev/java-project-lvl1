@@ -4,41 +4,27 @@ import java.util.Scanner;
 
 public class Engine {
     public static final int CORRECT_ANSWERS_LIMIT = 3;
-    private static int correctAnswersInARow = 0;
-    private static String userName;
-
-    public static void greetUser() {
-        Scanner scanner = new Scanner(System.in);
-
-        System.out.println("Welcome to Brain Games!");
-        System.out.print("May I have your name? ");
-        userName = scanner.next();
-        System.out.println("Hello, " + userName + "!");
-    }
-
-    private static void checkAnswer(String userAnswer, String correctAnswer) {
-        if (userAnswer.equals(correctAnswer)) {
-            System.out.println("Correct!");
-            correctAnswersInARow++;
-        } else {
-            System.out.println(userAnswer + " is wrong answer ;(. Correct answer was " + correctAnswer + ".");
-            System.out.println("Let's try again, " + userName + "!");
-            System.exit(0);
-        }
-    }
 
     public static void start(String taskDescription, String[][] gameData) {
-        greetUser();
+        Cli.greetUser();
         System.out.println(taskDescription);
         Scanner scanner = new Scanner(System.in);
 
-        while (correctAnswersInARow < CORRECT_ANSWERS_LIMIT) {
-            System.out.println("Question: " + gameData[correctAnswersInARow][0]);
+        for (int i = 0; i < CORRECT_ANSWERS_LIMIT; i++) {
+            System.out.println("Question: " + gameData[i][0]);
             var userAnswer = scanner.next();
-            checkAnswer(userAnswer, gameData[correctAnswersInARow][1]);
+            var correctAnswer = gameData[i][1];
+
+            if (userAnswer.equals(correctAnswer)) {
+                System.out.println("Correct!");
+            } else {
+                System.out.println(userAnswer + " is wrong answer ;(. Correct answer was " + correctAnswer + ".");
+                System.out.println("Let's try again, " + Cli.getUserName() + "!");
+                System.exit(0);
+            }
         }
 
-        System.out.println("Congratulations, " + userName + "!");
+        System.out.println("Congratulations, " + Cli.getUserName() + "!");
         System.exit(0);
     }
 }

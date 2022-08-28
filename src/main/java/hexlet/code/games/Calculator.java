@@ -10,20 +10,18 @@ public class Calculator {
     private static final String GAME_DESCRIPTION = "What is the result of the expression?";
 
     public static void run() {
-        var turn = 0;
         String[][] gameData = new String[Engine.CORRECT_ANSWERS_LIMIT][2];
 
-        while (turn < Engine.CORRECT_ANSWERS_LIMIT) {
-            var data = getGameData();
+        for (int turn = 0; turn < Engine.CORRECT_ANSWERS_LIMIT; turn++) {
+            var data = generateGameData();
             gameData[turn][0] = data[0];
             gameData[turn][1] = data[1];
-            turn++;
         }
 
         Engine.start(GAME_DESCRIPTION, gameData);
     }
 
-    private static String[] getGameData() {
+    private static String[] generateGameData() {
         String expression = createExpression(getRandomPositiveIntegers(), getRandomOperation());
         return new String[] {expression, Integer.toString(calculate(expression))};
     }

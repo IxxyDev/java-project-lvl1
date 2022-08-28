@@ -9,19 +9,17 @@ public class IsPrime {
     private static final String GAME_DESCRIPTION = "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
 
     public static void run() {
-        var turn = 0;
         String[][] gameData = new String[Engine.CORRECT_ANSWERS_LIMIT][2];
 
-        while (turn < Engine.CORRECT_ANSWERS_LIMIT) {
-            var data = getGameData();
+        for (int turn = 0; turn < Engine.CORRECT_ANSWERS_LIMIT; turn++) {
+            var data = generateGameData();
             gameData[turn][0] = data[0];
             gameData[turn][1] = data[1];
-            turn++;
         }
         Engine.start(GAME_DESCRIPTION, gameData);
     }
 
-    private static String[] getGameData() {
+    private static String[] generateGameData() {
         var number = getRandomPositiveInt();
         return new String[] {Integer.toString(number), getCorrectAnswer(number)};
     }

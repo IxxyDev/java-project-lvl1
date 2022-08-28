@@ -27,7 +27,7 @@ public class App {
 
         switch (number) {
             case EXIT -> System.exit(0);
-            case GREET -> Engine.greetUser();
+            case GREET -> Cli.greetUser();
             case IS_EVEN -> IsEven.run();
             case CALCULATOR -> Calculator.run();
             case CHECK_DIVIDER -> GCD.run();

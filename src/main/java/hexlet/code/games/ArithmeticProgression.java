@@ -5,7 +5,6 @@ import hexlet.code.Engine;
 import java.util.Random;
 
 public class ArithmeticProgression {
-    private static String correctAnswer;
     private static final int PROGRESSION_LENGTH_LIMIT = 5;
     private static final int MIN_PROGRESSION_LENGTH = 5;
     private static final int FIRST_NUMBER_LIMIT = 15;
@@ -13,23 +12,25 @@ public class ArithmeticProgression {
     private static final String GAME_DESCRIPTION = "What number is missing in the progression?";
 
     public static void run() {
-        var turn = 0;
         String[][] gameData = new String[Engine.CORRECT_ANSWERS_LIMIT][2];
 
-        while (turn < Engine.CORRECT_ANSWERS_LIMIT) {
-            var data = getGameData();
+        for (int turn = 0; turn < Engine.CORRECT_ANSWERS_LIMIT; turn++) {
+            var data = generateGameData(generateProgression());
             gameData[turn][0] = data[0];
             gameData[turn][1] = data[1];
-            turn++;
         }
         Engine.start(GAME_DESCRIPTION, gameData);
     }
 
-    private static String[] getGameData() {
-        var progression = popRandomElement(generateProgression());
+    private static String[] generateGameData(String[] progression) {
+        Random random = new Random();
+        var position = random.nextInt(progression.length - 1);
         var question = new StringBuilder();
-        for (String s : progression) {
-            question.append(s).append(" ");
+        var correctAnswer = progression[position];
+        progression[position] = "..";
+
+        for (String value : progression) {
+            question.append(value).append(" ");
         }
         return new String[] {question.toString(), correctAnswer};
     }
@@ -49,12 +50,4 @@ public class ArithmeticProgression {
         return result;
     }
 
-    private static String[] popRandomElement(String[] progression) {
-        Random random = new Random();
-        var position = random.nextInt(progression.length - 1);
-
-        correctAnswer = progression[position];
-        progression[position] = "..";
-        return progression;
-    }
 }
