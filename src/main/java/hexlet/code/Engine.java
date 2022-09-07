@@ -20,11 +20,10 @@ public class Engine {
             } else {
                 System.out.println(userAnswer + " is wrong answer ;(. Correct answer was " + correctAnswer + ".");
                 System.out.println("Let's try again, " + Cli.getUserName() + "!");
-                System.exit(0);
+                return;
             }
         }
 
         System.out.println("Congratulations, " + Cli.getUserName() + "!");
-        System.exit(0);
     }
 }

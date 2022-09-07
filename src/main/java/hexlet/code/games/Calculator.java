@@ -5,6 +5,7 @@ import hexlet.code.Engine;
 import java.util.Random;
 
 public class Calculator {
+    private static final Random RANDOM = new Random();
     private static final int NUMBER_OF_OPERATIONS = 3;
     private static final int RANDOM_UPPER_LIMIT = 100;
     private static final String GAME_DESCRIPTION = "What is the result of the expression?";
@@ -28,16 +29,14 @@ public class Calculator {
 
     public static int[] getRandomPositiveIntegers() {
         var numbers = new int[2];
-        Random random = new Random();
-        numbers[0] = random.nextInt(RANDOM_UPPER_LIMIT);
-        numbers[1] = random.nextInt(RANDOM_UPPER_LIMIT);
+        numbers[0] = RANDOM.nextInt(RANDOM_UPPER_LIMIT);
+        numbers[1] = RANDOM.nextInt(RANDOM_UPPER_LIMIT);
 
         return numbers;
     }
 
     private static String getRandomOperation() {
-        Random random = new Random();
-        int number = random.nextInt(NUMBER_OF_OPERATIONS);
+        int number = RANDOM.nextInt(NUMBER_OF_OPERATIONS);
 
         return switch (number) {
             case 0 -> "+";

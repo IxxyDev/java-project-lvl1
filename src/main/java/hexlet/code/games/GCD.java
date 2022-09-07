@@ -5,6 +5,7 @@ import hexlet.code.Engine;
 import java.util.Random;
 
 public class GCD {
+    private static final Random RANDOM = new Random();
     private static final int RANDOM_UPPER_LIMIT = 100;
     private static final String GAME_DESCRIPTION = "Find the greatest common divisor of given numbers.";
 
@@ -26,9 +27,8 @@ public class GCD {
     }
 
     private static String[] getRandomPositiveInts() {
-        Random random = new Random();
-        return new String[] {Integer.toString(random.nextInt(RANDOM_UPPER_LIMIT)),
-            Integer.toString(random.nextInt(RANDOM_UPPER_LIMIT))};
+        return new String[] {Integer.toString(RANDOM.nextInt(RANDOM_UPPER_LIMIT)),
+            Integer.toString(RANDOM.nextInt(RANDOM_UPPER_LIMIT))};
     }
 
     private static String calculateCSD(String[] numbers) {

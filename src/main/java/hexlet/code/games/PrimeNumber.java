@@ -4,7 +4,8 @@ import hexlet.code.Engine;
 
 import java.util.Random;
 
-public class IsPrime {
+public class PrimeNumber {
+    private static final Random RANDOM = new Random();
     private static final int RANDOM_UPPER_LIMIT = 500;
     private static final String GAME_DESCRIPTION = "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
 
@@ -25,8 +26,7 @@ public class IsPrime {
     }
 
     private static int getRandomPositiveInt() {
-        Random random = new Random();
-        return random.nextInt(RANDOM_UPPER_LIMIT);
+        return RANDOM.nextInt(RANDOM_UPPER_LIMIT);
     }
 
     private static String getCorrectAnswer(int number) {
