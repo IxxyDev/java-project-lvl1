@@ -15,18 +15,19 @@ public class ArithmeticProgression {
     public static void run() {
         var step = RANDOM.nextInt(STEP_LIMIT) + 1;
         var progressionLength = RANDOM.nextInt(PROGRESSION_LENGTH_LIMIT) + MIN_PROGRESSION_LENGTH;
+        var firstNumber = RANDOM.nextInt(FIRST_NUMBER_LIMIT);
+        var position = RANDOM.nextInt(progressionLength - 1);
         String[][] gameData = new String[Engine.CORRECT_ANSWERS_LIMIT][2];
 
         for (int turn = 0; turn < Engine.CORRECT_ANSWERS_LIMIT; turn++) {
-            var data = generateGameData(generateProgression(progressionLength, step));
+            var data = generateGameData(generateProgression(firstNumber, progressionLength, step), position);
             gameData[turn][0] = data[0];
             gameData[turn][1] = data[1];
         }
         Engine.start(GAME_DESCRIPTION, gameData);
     }
 
-    private static String[] generateGameData(String[] progression) {
-        var position = RANDOM.nextInt(progression.length - 1);
+    private static String[] generateGameData(String[] progression, int position) {
         var question = new StringBuilder();
         var correctAnswer = progression[position];
         progression[position] = "..";
@@ -37,8 +38,7 @@ public class ArithmeticProgression {
         return new String[] {question.toString(), correctAnswer};
     }
 
-    private static String[] generateProgression(int progressionLength, int step) {
-        var firstNumber = RANDOM.nextInt(FIRST_NUMBER_LIMIT);
+    private static String[] generateProgression(int firstNumber, int progressionLength, int step) {
         String[] result = new String[progressionLength];
 
         for (int i = 0; i < progressionLength; i++) {

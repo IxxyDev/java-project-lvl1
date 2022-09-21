@@ -23,7 +23,8 @@ public class GCD {
 
     private static String[] generateGameData() {
         var numbers = getRandomPositiveInts();
-        return new String[] {numbers[0] + " " + numbers[1], calculateCSD(numbers)};
+        return new String[] {numbers[0] + " " + numbers[1], calculateCSD(
+            Integer.parseInt(numbers[0]), Integer.parseInt(numbers[1]))};
     }
 
     private static String[] getRandomPositiveInts() {
@@ -31,9 +32,7 @@ public class GCD {
             Integer.toString(RANDOM.nextInt(RANDOM_UPPER_LIMIT))};
     }
 
-    private static String calculateCSD(String[] numbers) {
-        var firstNumber = Integer.parseInt(numbers[0]);
-        var secondNumber = Integer.parseInt(numbers[1]);
+    private static String calculateCSD(int firstNumber, int secondNumber) {
         while (firstNumber != 0 && secondNumber != 0) {
             if (firstNumber > secondNumber) {
                 firstNumber = firstNumber % secondNumber;

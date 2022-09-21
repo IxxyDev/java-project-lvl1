@@ -23,8 +23,13 @@ public class Calculator {
     }
 
     private static String[] generateGameData() {
-        String expression = createExpression(getRandomPositiveIntegers(), getRandomOperation());
-        return new String[] {expression, Integer.toString(calculate(expression))};
+        int[] randomPositiveNumbers = getRandomPositiveIntegers();
+        String expression = createExpression(randomPositiveNumbers, getRandomOperation());
+        return new String[] {expression, Integer.toString(calculate(
+            randomPositiveNumbers[0],
+            randomPositiveNumbers[1],
+            getRandomOperation()
+        ))};
     }
 
     public static int[] getRandomPositiveIntegers() {
@@ -49,12 +54,7 @@ public class Calculator {
         return numbers[0] + " " + operation + " " + numbers[1];
     }
 
-    private static int calculate(String expression) {
-        var arr = expression.split(" ");
-        var firstOperand = Integer.parseInt(arr[0]);
-        var operation = arr[1];
-        var secondOperand = Integer.parseInt(arr[2]);
-
+    private static int calculate(int firstOperand, int secondOperand, String operation) {
         return switch (operation) {
             case "+" -> firstOperand + secondOperand;
             case "-" -> firstOperand - secondOperand;
