@@ -24,11 +24,13 @@ public class Calculator {
 
     private static String[] generateGameData() {
         int[] randomPositiveNumbers = getRandomPositiveIntegers();
-        String expression = createExpression(randomPositiveNumbers, getRandomOperation());
+        String operation = getRandomOperation();
+        String expression = createExpression(randomPositiveNumbers, operation);
+
         return new String[] {expression, Integer.toString(calculate(
             randomPositiveNumbers[0],
             randomPositiveNumbers[1],
-            getRandomOperation()
+            operation
         ))};
     }
 
