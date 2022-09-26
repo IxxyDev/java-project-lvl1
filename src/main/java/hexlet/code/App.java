@@ -18,7 +18,7 @@ public class App {
     private static final int ARITHMETIC_PROGRESSION = 5;
     private static final int IS_PRIME = 6;
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         System.out.println("/Welcome to the Brain Games!/");
         printMenu();
         Scanner scanner = new Scanner(System.in);
