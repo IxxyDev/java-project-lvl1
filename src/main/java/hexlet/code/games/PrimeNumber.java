@@ -1,13 +1,12 @@
 package hexlet.code.games;
 
 import hexlet.code.Engine;
-
-import java.util.Random;
+import hexlet.code.utils.Utils;
 
 public class PrimeNumber {
-    private static final Random RANDOM = new Random();
     private static final int RANDOM_UPPER_LIMIT = 500;
-    private static final String GAME_DESCRIPTION = "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
+    private static final String PRIME_NUMBER_GAME_DESCRIPTION =
+        "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
 
     public static void run() {
         String[][] gameData = new String[Engine.CORRECT_ANSWERS_LIMIT][2];
@@ -17,32 +16,15 @@ public class PrimeNumber {
             gameData[turn][0] = data[0];
             gameData[turn][1] = data[1];
         }
-        Engine.start(GAME_DESCRIPTION, gameData);
+        Engine.start(PRIME_NUMBER_GAME_DESCRIPTION, gameData);
     }
 
     private static String[] generateGameData() {
-        var number = getRandomPositiveInt();
-        return new String[] {Integer.toString(number), getCorrectAnswer(number)};
+        var randomNumber = Utils.generateRandomPositiveInt(RANDOM_UPPER_LIMIT);
+        return new String[] {Integer.toString(randomNumber), checkAnswer(randomNumber)};
     }
 
-    private static int getRandomPositiveInt() {
-        return RANDOM.nextInt(RANDOM_UPPER_LIMIT);
-    }
-
-    private static String getCorrectAnswer(int number) {
-        return isPrime(number) ? "yes" : "no";
-    }
-
-    private static boolean isPrime(int number) {
-        if (number <= 1) {
-            return false;
-        }
-
-        for (int i = 2; i < number; i++) {
-            if (number % i == 0) {
-                return false;
-            }
-        }
-        return true;
+    private static String checkAnswer(int number) {
+        return Utils.isPrime(number) ? "yes" : "no";
     }
 }

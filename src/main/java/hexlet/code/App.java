@@ -10,7 +10,6 @@ import java.util.Scanner;
 
 
 public class App {
-    // Через Enum не получалось проверить в switch/case(((
     private static final int EXIT = 0;
     private static final int GREET = 1;
     private static final int IS_EVEN = 2;

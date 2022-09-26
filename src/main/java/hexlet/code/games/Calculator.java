@@ -1,14 +1,12 @@
 package hexlet.code.games;
 
 import hexlet.code.Engine;
-
-import java.util.Random;
+import hexlet.code.utils.Utils;
 
 public class Calculator {
-    private static final Random RANDOM = new Random();
     private static final int NUMBER_OF_OPERATIONS = 3;
     private static final int RANDOM_UPPER_LIMIT = 100;
-    private static final String GAME_DESCRIPTION = "What is the result of the expression?";
+    private static final String CALCULATOR_GAME_DESCRIPTION = "What is the result of the expression?";
 
     public static void run() {
         String[][] gameData = new String[Engine.CORRECT_ANSWERS_LIMIT][2];
@@ -19,12 +17,12 @@ public class Calculator {
             gameData[turn][1] = data[1];
         }
 
-        Engine.start(GAME_DESCRIPTION, gameData);
+        Engine.start(CALCULATOR_GAME_DESCRIPTION, gameData);
     }
 
     private static String[] generateGameData() {
-        int[] randomPositiveNumbers = getRandomPositiveIntegers();
-        String operation = getRandomOperation();
+        int[] randomPositiveNumbers = Utils.generateRandomPositiveIntArray(RANDOM_UPPER_LIMIT);
+        String operation = Utils.generateRandomOperation(NUMBER_OF_OPERATIONS);
         String expression = createExpression(randomPositiveNumbers, operation);
 
         return new String[] {expression, Integer.toString(calculate(
@@ -32,24 +30,6 @@ public class Calculator {
             randomPositiveNumbers[1],
             operation
         ))};
-    }
-
-    public static int[] getRandomPositiveIntegers() {
-        var numbers = new int[2];
-        numbers[0] = RANDOM.nextInt(RANDOM_UPPER_LIMIT);
-        numbers[1] = RANDOM.nextInt(RANDOM_UPPER_LIMIT);
-
-        return numbers;
-    }
-
-    private static String getRandomOperation() {
-        int number = RANDOM.nextInt(NUMBER_OF_OPERATIONS);
-
-        return switch (number) {
-            case 0 -> "+";
-            case 1 -> "-";
-            default -> "*";
-        };
     }
 
     private static String createExpression(int[] numbers, String operation) {

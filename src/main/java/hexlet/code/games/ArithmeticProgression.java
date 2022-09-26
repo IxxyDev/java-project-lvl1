@@ -10,7 +10,7 @@ public class ArithmeticProgression {
     private static final int MIN_PROGRESSION_LENGTH = 5;
     private static final int FIRST_NUMBER_LIMIT = 15;
     private static final int STEP_LIMIT = 20;
-    private static final String GAME_DESCRIPTION = "What number is missing in the progression?";
+    private static final String PROGRESSION_GAME_DESCRIPTION = "What number is missing in the progression?";
 
     public static void run() {
         var step = RANDOM.nextInt(STEP_LIMIT) + 1;
@@ -24,7 +24,7 @@ public class ArithmeticProgression {
             gameData[turn][0] = data[0];
             gameData[turn][1] = data[1];
         }
-        Engine.start(GAME_DESCRIPTION, gameData);
+        Engine.start(PROGRESSION_GAME_DESCRIPTION, gameData);
     }
 
     private static String[] generateGameData(String[] progression, int position) {
