@@ -36,11 +36,12 @@ public class Calculator {
         return numbers[0] + " " + operation + " " + numbers[1];
     }
 
-    private static int calculate(int firstOperand, int secondOperand, String operation) {
+    private static int calculate(int firstOperand, int secondOperand, String operation) throws Exception {
         return switch (operation) {
             case "+" -> firstOperand + secondOperand;
             case "-" -> firstOperand - secondOperand;
-            default -> firstOperand * secondOperand;
+            case "*" -> firstOperand * secondOperand;
+            default -> throw new Exception("This operation is not allowed");
         };
     }
 }
