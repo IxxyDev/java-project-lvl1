@@ -8,7 +8,7 @@ public class Calculator {
     private static final int RANDOM_UPPER_LIMIT = 100;
     private static final String CALCULATOR_GAME_DESCRIPTION = "What is the result of the expression?";
 
-    public static void run() {
+    public static void run() throws Exception {
         String[][] gameData = new String[Engine.CORRECT_ANSWERS_LIMIT][2];
 
         for (int turn = 0; turn < Engine.CORRECT_ANSWERS_LIMIT; turn++) {
@@ -20,7 +20,7 @@ public class Calculator {
         Engine.start(CALCULATOR_GAME_DESCRIPTION, gameData);
     }
 
-    private static String[] generateGameData() {
+    private static String[] generateGameData() throws Exception {
         int[] randomPositiveNumbers = Utils.generateRandomPositiveIntArray(RANDOM_UPPER_LIMIT);
         String operation = Utils.generateRandomOperation(NUMBER_OF_OPERATIONS);
         String expression = createExpression(randomPositiveNumbers, operation);
