@@ -5,6 +5,7 @@ plugins {
 }
 
 application {
+    sourceSets.main.java.srcDirs = ['app/src']
     mainClass = "hexlet.code.App"
 }
 
